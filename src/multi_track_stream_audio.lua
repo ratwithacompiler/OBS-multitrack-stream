@@ -204,7 +204,15 @@ function script_update(settings)
     --print("sending fake recording started event")
     --on_event(obs.OBS_FRONTEND_EVENT_RECORDING_STARTING)
 
-    set_multi_tracks(obs.obs_frontend_get_recording_output())
+    if g_recording_dev then
+        local output = obs.obs_frontend_get_recording_output()
+        set_multi_tracks(output)
+        obs.obs_output_release(output)
+    end
+
+    local output = obs.obs_frontend_get_streaming_output()
+    set_multi_tracks(output)
+    obs.obs_output_release(output)
 end
 
 function script_load(settings)
