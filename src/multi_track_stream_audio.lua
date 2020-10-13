@@ -177,14 +177,11 @@ function script_properties()
 end
 
 function script_description()
-    return [[Use a different audio track on Twitch for VODs and streams. Version 0.0.1 by RatWithAShotgun.
+    return [[Use a different audio track on Twitch for VODs and streams. Version 0.0.2 by RatWithAShotgun.
 
-Note: Sometimes it just doesn't seem to work and the VOD also has the stream audio. Clips from streams currently still have the stream audio too. Should hopefully be fixed by Twitch soon, still in beta.
+Note: Sometimes it just doesn't seem to work and the VOD also has the stream audio. Clips from streams still have the stream audio too for now. Should hopefully be fixed by Twitch soon, still in beta.
 
-Select Track Sources via OBS -> Edit-> Advanced Audio Properties
-Changing the VOD Audio Track will not take effect while the stream is live!
-
-Track 1 is used by OBS for the stream by default so using Track 2 for VODs is probably easiest]]
+Select Track Sources via OBS -> Edit-> Advanced Audio Properties. Changing the VOD Audio Track below will not take effect while the stream is live. Track 1 is used by OBS for the stream so Track 2 for VODs is usually easiest]]
 end
 
 function script_defaults(settings)
