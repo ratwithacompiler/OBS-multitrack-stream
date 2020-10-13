@@ -22,6 +22,7 @@ g_recording_dev = false
 
 g_audio_track = nil -- [1-6]
 g_audio_bitrate = nil
+g_enabled = nil
 
 ENCODER_NAME = "STREAM_MULTI_TRACK_AUDIO_ENCODER_V001__%s"
 
@@ -38,7 +39,7 @@ function get_create_encoder(wanted_track)
         return encoder
     end
 
-    audio = obs.obs_get_audio()
+    local audio = obs.obs_get_audio()
     if audio == nil then
         print("couldn't get obs audio")
         return nil
@@ -91,6 +92,12 @@ end
 
 function set_multi_tracks(output)
     if output == nil then
+        return
+    end
+
+    if not g_enabled then
+        print("not enabled, clearing")
+        clear_encoder(output)
         return
     end
 
@@ -170,6 +177,7 @@ end
 function script_properties()
     local props = obs.obs_properties_create()
 
+    obs.obs_properties_add_bool(props, "enabled", "Enabled")
     obs.obs_properties_add_int(props, "audio_track", "VOD Audio Track (1-6)", 1, 6, 1)
     obs.obs_properties_add_int(props, "bitrate", "Audio Bitrate", 60, 320, 1)
 
@@ -185,6 +193,7 @@ Select Track Sources via OBS -> Edit-> Advanced Audio Properties. Changing the V
 end
 
 function script_defaults(settings)
+    obs.obs_data_set_default_bool(settings, "enabled", true)
     obs.obs_data_set_default_int(settings, "bitrate", 160)
     obs.obs_data_set_default_int(settings, "audio_track", 2)
 end
@@ -195,8 +204,9 @@ function script_update(settings)
         g_audio_track = nil
     end
     g_audio_bitrate = obs.obs_data_get_int(settings, "bitrate")
+    g_enabled = obs.obs_data_get_bool(settings, "enabled")
 
-    print(("multi_track_stream update: track: %d. bitrate: %d"):format(g_audio_track, g_audio_bitrate))
+    print(("multi_track_stream update: track: %d. bitrate: %d. enabled: %s"):format(g_audio_track, g_audio_bitrate, g_enabled))
 
     --print("sending fake recording started event")
     --on_event(obs.OBS_FRONTEND_EVENT_RECORDING_STARTING)
