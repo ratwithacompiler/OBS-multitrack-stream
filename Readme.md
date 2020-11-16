@@ -9,6 +9,8 @@ This uses the multi track audio support Twitch added for their new music tool bu
 
 * **In order to exclude certain parts like music they need to be their own separate source in OBS**. If all audio (game/browser/music) is captured just via a single Desktop Audio Capture or Input Capture it's not possible to exclude a part of it in OBS. 
 
+* The plugin must be set up and enabled before going live, enabling it while already streaming is too late. 
+
 Creating separate audio sources is left to the user and can be done in many different ways like capturing applications by themselves, using VoiceMeeter, Virtual Audio Cables or using some mixer software like GoXLR has and what's easiest will depend on the specific audio setup used.
 
 ![OBS Track Mixer](https://i.imgur.com/MKeLFH1.png)
