@@ -1,7 +1,7 @@
 #### Multi Track Stream Audio
 
 Allows having two separate audio tracks on Twitch, one for live viewers and a completely separate one for Twitch VODs.
-This uses the multi track audio support Twitch added for their new music tool but which can be used with any audio tracks in OBS.
+This uses the multi track audio support Twitch and OBS added for the new Twitch music tool but which can be used with any audio tracks in OBS.
 
 #### Notes:
 
@@ -10,6 +10,8 @@ This uses the multi track audio support Twitch added for their new music tool bu
 * **In order to exclude certain parts like music they need to be their own separate source in OBS**. If all audio (game/browser/music) is captured just via a single Desktop Audio Capture or Input Capture it's not possible to exclude a part of it in OBS. 
 
 * The plugin must be set up and enabled before going live, enabling it while already streaming is too late. 
+
+* OBS will have this as a default feature as of the next OBS release.
 
 Creating separate audio sources is left to the user and can be done in many different ways like capturing applications by themselves, using VoiceMeeter, Virtual Audio Cables or using some mixer software like GoXLR has and what's easiest will depend on the specific audio setup used.
 
@@ -33,6 +35,20 @@ Select which sources are audible on which tracks in OBS via the mixer in `OBS ->
 
 ![Script Settings](https://i.imgur.com/B6WpmbT.png)
 
+
+
+
+##### Example Windows Single PC setup:
+
+If you're on a single PC setup on Windows the easiest way to separate audio is probably using Voicemeeter. 
+
+* play whatever music or audio you don't want on the VOD to the Voicemeeter virtual audio device
+  * select that virtual sound device for the application either via its settings if it has that or otherwise Windows 10 also now just lets you select separate audio devices for specific applications via "App volume and device properties" settings
+* set Voicemeeter to play the music/audio from that device to your headphones and to the virtual device output
+* add a OBS audio input source in OBS that uses that device as input source
+* now you hear the music and OBS captures it but it's separate from desktop audio and can be separate for the VOD 
+
+Just one example, there are a million ways that can be done on Windows.
 
 ##### Example setup for a 2 PC setup with GoXLR and Spotify both on the gaming PC:
 
