@@ -42,11 +42,13 @@ Select which sources are audible on which tracks in OBS via the mixer in `OBS ->
 
 If you're on a single PC setup on Windows the easiest way to separate audio is probably using Voicemeeter. 
 
-* play whatever music or audio you don't want on the VOD to the Voicemeeter virtual audio device
+* play whatever music or audio you don't want on the VOD only to the Voicemeeter virtual audio device not to your default desktop audio device
   * select that virtual sound device for the application either via its settings if it has that or otherwise Windows 10 also now just lets you select separate audio devices for specific applications via "App volume and device properties" settings
-* set Voicemeeter to play the music/audio from that device to your headphones and to the virtual device output
-* add a OBS audio input source in OBS that uses that device as input source
-* now you hear the music and OBS captures it but it's separate from desktop audio and can be separate for the VOD 
+* set Voicemeeter itself to play the music/audio going to that device to your headphones and back to the virtual device output
+* add a audio input source in OBS that uses that virtual Voicemeeter device as input, call it Music
+* in the OBS audio mixer just uncheck that Music source for track 2
+* then in the multi track plugin just be sure that track 2 is selected for VOD audio (`OBS -> Tools -> Scripts`)
+* now Track 1 with music is what live viewers hear while Track 2 without music is what gets put on the VOD and you still hear the music via voicemeeter
 
 Just one example, there are a million ways that can be done on Windows.
 
@@ -80,5 +82,5 @@ Streaming PC OBS:
 * install OBS NDI plugin https://github.com/Palakis/obs-ndi/releases
 * add a NDI source called Music and select the audio only NDI source from the Gaming PC as input
 * in the OBS mixer just uncheck that Music source for track 2
-* then in the multi track plugin just be sure that track 2 is select for VOD audio (`OBS -> Tools -> Scripts`)
+* then in the multi track plugin just be sure that track 2 is selected for VOD audio (`OBS -> Tools -> Scripts`)
 * now Track 1 with music is what live viewers hear while Track 2 without music is what gets put on the VOD
