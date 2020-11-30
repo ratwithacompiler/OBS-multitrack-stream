@@ -1,11 +1,12 @@
+##  Plugin Discontinued
+## OBS 26.1 lets you set a VOD track by itself now https://github.com/obsproject/obs-studio/releases
+
 #### Multi Track Stream Audio
 
 Allows having two separate audio tracks on Twitch, one for live viewers and a completely separate one for Twitch VODs.
 This uses the multi track audio support Twitch and OBS added for the new Twitch music tool but which can be used with any audio tracks in OBS.
 
-#### Notes:
-
-* Sometimes it just doesn't seem to work and the VOD also just has the stream audio. Still in beta so hopefully should all be fixed soon. 
+#### Notes: 
 
 * **In order to exclude certain parts like music they need to be their own separate source in OBS**. If all audio (game/browser/music) is captured just via a single Desktop Audio Capture or Input Capture it's not possible to exclude a part of it in OBS. 
 
